@@ -4,14 +4,13 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
-/*import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-*/
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -30,6 +29,7 @@ public class BaseClass {
 	ReadConfig readconfig = new ReadConfig();
 	public String BaseURL = readconfig.getApplicationURL();
 	public WebDriver driver;
+//	public static Logger logger;
 
 	//public static Logger logger;
 	
@@ -44,15 +44,16 @@ public class BaseClass {
 	
 
 	
-
+/*
 	@Parameters("browser")
 	@BeforeClass
 	public void setup(String br) throws Exception {
 		try {
 
-		/*	logger = Logger.getLogger("Zuehlke");
+			logger = Logger.getLogger("TestNG_BDD");
+			//logger = Logger.getLogger(BaseClass.class);
 			PropertyConfigurator.configure("Log4j.properties");
-*/
+
 			if (br.equals("chrome")) {
 				System.setProperty("webdriver.chrome.driver", readconfig.getchromepath());
 				driver = new ChromeDriver();
@@ -70,6 +71,7 @@ public class BaseClass {
 		}
 
 	}
+	*/
 
 	@AfterClass
 	public void tearDown() {

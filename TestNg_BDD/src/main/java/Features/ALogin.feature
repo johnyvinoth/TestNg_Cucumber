@@ -1,6 +1,6 @@
 Feature: Login
 
-@SuccessfulLogin @AllTests
+@SuccessfulLogin @AllTests @Login
 Scenario: Sucessful Login with Valid Credentials
 	Given user Launch Chrome browser
 	When User opens URL 
@@ -13,7 +13,7 @@ Scenario: Sucessful Login with Valid Credentials
 	And Page Title should be "Login - My Store"
 	Then close browser
 	
-@FailLogin @AllTests
+@FailLogin @AllTests @Login 
 Scenario: UnSucessful Login with InValid Credentials
 	Given user Launch Chrome browser
 	When User opens URL 
