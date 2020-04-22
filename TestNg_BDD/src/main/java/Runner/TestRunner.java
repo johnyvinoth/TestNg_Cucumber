@@ -5,9 +5,15 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.cucumber.listener.Reporter;
+import java.io.*;
+import TestCase.FileReaderManager;
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.TestNGCucumberRunner;
+
+
+
 
 
 
@@ -21,7 +27,8 @@ import cucumber.api.testng.TestNGCucumberRunner;
                 "html:target/cucumber-reports/cucumber-pretty",
                 "json:target/cucumber-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun.txt"
-        },plugin = {"pretty","json:target/cucumber-reports/CucumberTestReport.json"
+        },plugin = {"pretty","com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html"
+        //plugin = {"pretty","json:target/cucumber-reports/CucumberTestReport.json"
           }
         )
 		
@@ -46,6 +53,10 @@ public class TestRunner {
  
     @AfterClass(alwaysRun = true)
     public void tearDownClass() throws Exception {
+    	Reporter.loadXMLConfig(new File(FileReaderManager.getInstance().getConfigReader().getReportConfigPath()));
+    	 Reporter.setSystemInfo("User Name", System.getProperty("user.name"));
+         Reporter.setSystemInfo("Time Zone", System.getProperty("user.timezone"));
+         
         testNGCucumberRunner.finish();
     }
 }
