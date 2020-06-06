@@ -10,7 +10,6 @@ import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -29,6 +28,7 @@ public class BaseClass {
 	ReadConfig readconfig = new ReadConfig();
 	public String BaseURL = readconfig.getApplicationURL();
 	public WebDriver driver;
+	
 //	public static Logger logger;
 
 	//public static Logger logger;

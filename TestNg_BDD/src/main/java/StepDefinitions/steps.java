@@ -21,6 +21,7 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.github.bonigarcia.wdm.WebDriverManager;
 //import io.cucumber.java.en.When;
 import pageObjects.AddressConfPage;
 import pageObjects.ChoosePaymentPage;
@@ -87,7 +88,8 @@ public class steps extends BaseClass  {
 @Given("^user Launch Chrome browser$")
 public void user_Launch_Chrome_browser() {
   System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//Drivers/chromedriver.exe");
-   driver = new ChromeDriver();
+  WebDriverManager.chromedriver().setup(); 
+  driver = new ChromeDriver();
    driver.manage().window().maximize();
    
    mp = new MainPage(driver);
